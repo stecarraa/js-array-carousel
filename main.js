@@ -9,9 +9,6 @@ const givenImages = [
 
 
 
-
-
-
 // immagine da cui voglio partire nell'array
 let activeElementIndex = 0;
 
@@ -20,19 +17,23 @@ let activeElementIndex = 0;
 const imgsWrapper = document.querySelector('.carousel-container');
 const imgList = imgsWrapper.children;
 
-// creo l'elemento html di tipo img
+
+
+for(index = 0 ; index < givenImages.length ; index++){
+    // creo l'elemento html di tipo img
 const newImg = document.createElement('img');
 
 // aggiungo le classi che voglio che questo abbia
-newImg.classList.add('w-100', 'd-block');
+newImg.classList.add('w-100');
 
 // cambio l'src dell'immagine => .setAttribute(quale attributo, contenuto dell'attributo)
-newImg.setAttribute('src', givenImages[activeElementIndex]);
+newImg.setAttribute('src', givenImages[index]);
 
 //  aggiungo l'immagine creata alla lista
 imgsWrapper.append(newImg);
 
 imgList[activeElementIndex].classList.add('active');
+}
 
 // | prendo il bottone "next"
 const btnNext = document.getElementById('next-button');
