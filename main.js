@@ -24,12 +24,33 @@ const imgList = imgsWrapper.children;
 const newImg = document.createElement('img');
 
 // aggiungo le classi che voglio che questo abbia
-newImg.classList.add('w-100', 'd-bolck');
+newImg.classList.add('w-100', 'd-block');
 
-// ? cambio l'src dell'immagine => .setAttribute(quale attributo, contenuto dell'attributo)
-newImg.setAttribute('src', 'https://cdn.photographycourse.net/wp-content/uploads/2022/04/Portrait-vs-Landscape-Featured-Image-3.jpg');
+// cambio l'src dell'immagine => .setAttribute(quale attributo, contenuto dell'attributo)
+newImg.setAttribute('src', givenImages[activeElementIndex]);
 
-// | aggiungo l'immagine creata alla lista
+//  aggiungo l'immagine creata alla lista
 imgsWrapper.append(newImg);
 
 imgList[activeElementIndex].classList.add('active');
+
+// | prendo il bottone "next"
+const btnNext = document.getElementById('next-button');
+
+btnNext.addEventListener('click', function(){
+    
+    imgList[activeElementIndex].classList.remove('active');
+   
+    // ? scorro di un posto l'elemento attivo
+    activeElementIndex++;
+
+    //  se siamo alla fine dell'array, non uscire ma ricomincia dal primo elemento della lista.
+    if (activeElementIndex === imgList.length){
+        activeElementIndex = 0;
+    }
+
+    // aggiungo la classe active al nuovo elemento attivo
+    imgList[activeElementIndex].classList.add('active');
+
+    console.log('Cliccato! L\'elemento adesso attivo è in posizione: ' + activeElementIndex);
+});
